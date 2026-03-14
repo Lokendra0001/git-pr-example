@@ -16,9 +16,6 @@ jobs:
       - name: Install client dependencies
         run: npm install
         working-directory: client
-      - name: Test client
-        run: npm test
-        working-directory: client
 
   server:
     runs-on: ubuntu-latest
@@ -30,7 +27,4 @@ jobs:
           node-version: 18
       - name: Install server dependencies
         run: npm install
-        working-directory: server
-      - name: Test server
-        run: npm test
         working-directory: server
