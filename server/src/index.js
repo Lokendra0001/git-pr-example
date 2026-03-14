@@ -29,14 +29,26 @@ const PORT = 3002;
 initalizeUserId();
 initSubscriber();
 
-setTimeout(() => {
-  try {
-    foo();
-  } catch (error) {
-    console.log("Sentry Msg Forwaded");
-    // Sentry.captureException(error);
+function total(items) {
+  let sum = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].price) {
+      sum = sum + items[i].price;
+    }
   }
-}, 1000);
+
+  return sum;
+}
+
+// Example usage
+const cart = [
+  { name: "Laptop", price: 1000 },
+  { name: "Mouse", price: 20 },
+  { name: "Keyboard" },
+];
+
+total(cart);
 app.use("/api", RedisRoute);
 
 app.get("/", (req, res) => res.status(200).send("Hello From Server"));
